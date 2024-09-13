@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="d-flex justify-content-center">
-      <div class="mc_form rounded mt-1" id="managers_check_form_id">
+      <div class="mc_form rounded mt-1 shadow-lg" id="managers_check_form_id">
         <h3 class="text-center text-white bg-success p-3 fw-bold">
           MC CREATOR
         </h3>
@@ -50,18 +50,20 @@
               disabled
             ></textarea>
           </div>
-          <input
-            type="submit"
-            value="PRINT PREVIEW"
-            class="btn btn-primary mt-3"
-          />
-          <input type="button" class="btn btn-danger mt-3 mx-2" value="CLEAR" />
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary mt-3">
+              PRINT PREVIEW
+            </button>
+            <button type="button" class="btn btn-danger mt-3" id="clear_id">
+              CLEAR
+            </button>
+          </div>
         </form>
         <div class="choose_payee mt-3">
           <div class="mt-2 mx-2 fw-bold">CHOOSE:</div>
           <div class="d-flex justify-content-center">
-            <button id="dorel_id">DORELCO</button>
-            <button id="water_id">WATER DISTRICT</button>
+            <button type="button" id="dorel_id">DORELCO</button>
+            <button type="button" id="water_id">WATER DISTRICT</button>
           </div>
         </div>
       </div>
