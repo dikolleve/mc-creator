@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>PRINT MC</title>
+  </head>
+  <body>
+    <div class="template">
+      <div class="t_date">
+        <div class="month">09</div>
+        <div class="date">07</div>
+        <div class="year">2024</div>
+      </div>
+      <div class="name_amount">
+        <div class="payee">
+          DON ORESTES ROMUALDEZ ELECTRIC COOPERATIVE, INC.
+        </div>
+        <div class="amount">1,000,000,000.00</div>
+      </div>
+      <div class="amount_in_words">
+        FIVE THOUSAND FOUR HUNDRED TWENTY EIGHT PESOS ONLY
+      </div>
+      <button id="print_id">PRINT</button>
+      <div class="letter_case">
+        <strong>CHOICE LETTER CASE BELOW:</strong>
+        <br />
+        <label for="UPPERCASE PAYEE / Title Case Amount">
+          <input
+            type="radio"
+            name="case"
+            value="uppercase_payee_title_case_amount"
+            checked
+          />UPPERCASE PAYEE / Title Case Amount
+        </label>
+        <br />
+        <label for="UPPERCASE ALL">
+          <input type="radio" name="case" value="uppercase" />UPPERCASE ALL
+        </label>
+        <br />
+        <label for="Title Case All">
+          <input type="radio" name="case" value="lowercase" />Title Case All
+        </label>
+      </div>
+    </div>
+
+    <script>
+      const print_mc = document.querySelector("#print_id");
+      const month_mc = document.querySelector(".month");
+      const date_mc = document.querySelector(".date");
+      const year_mc = document.querySelector(".year");
+      const payee_mc = document.querySelector(".payee");
+      const amount_mc = document.querySelector(".amount");
+      const amount_in_words_mc = document.querySelector(".amount_in_words");
+      const radioCase = document.querySelectorAll('input[name="case"]');
+
+      let payee_text;
+      let amount_in_words_text;
+
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      const encodedData = getQueryParam("data");
+
+      if (encodedData) {
+        const jsonData = JSON.parse(decodeURIComponent(encodedData));
+        let date_arr = jsonData.input_date.split("-");
+        console.log(date_arr);
+
+        month_mc.innerHTML = date_arr[1];
+        date_mc.innerHTML = date_arr[2];
+        year_mc.innerHTML = date_arr[0];
+
+        payee_mc.innerHTML = jsonData.payee;
+        amount_mc.innerHTML = jsonData.amount;
+        amount_in_words_mc.innerHTML = jsonData.amount_in_wds;
+
+        payee_text = jsonData.payee;
+        amount_in_words_text = jsonData.amount_in_wds;
+
+        console.log("payee text: " + payee_text);
+        console.log("words: " + amount_in_words_text);
+
+        //document.getElementById("output").innerHTML = `Payee: ${jsonData.payee} ${jsonData.input_date} ${jsonData.amount} ${jsonData.amount_in_wds}`;
+      } else {
+        document.getElementById("output").innerHTML = "no data";
+      }
+
+      const handlePrint = () => {
+        window.print();
+      };
+
+      radioCase.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          let selectedCase = document.querySelector(
+            'input[name="case"]:checked'
+          ).value;
+          console.log(selectedCase);
+          if (selectedCase === "uppercase") {
+            payee_mc.innerHTML = uppercaseText(payee_text);
+            amount_in_words_mc.innerHTML = uppercaseText(amount_in_words_text);
+          } else if (selectedCase === "lowercase") {
+            payee_mc.innerHTML = titleCaseText(payee_text);
+            amount_in_words_mc.innerHTML = titleCaseText(amount_in_words_text);
+          } else {
+            payee_mc.innerHTML = uppercaseText(payee_text);
+            amount_in_words_mc.innerHTML = titleCaseText(amount_in_words_text);
+          }
+        });
+      });
+
+      const uppercaseText = (text) => {
+        return text.toUpperCase();
+      };
+
+      const titleCaseText = (text) => {
+        let split_text = text.split(" ");
+        console.log(split_text);
+        return split_text
+          .map(
+            (letter_case) =>
+              letter_case.charAt(0).toUpperCase() +
+              letter_case.slice(1, letter_case.length).toLowerCase()
+          )
+          .join(" ");
+      };
+
+      const init = () => {
+        document.addEventListener("DOMContentLoaded", () => {
+          payee_mc.innerHTML = uppercaseText(payee_text);
+          amount_in_words_mc.innerHTML = titleCaseText(amount_in_words_text);
+        });
+      };
+
+      print_mc.addEventListener("click", handlePrint);
+      init();
+    </script>
+  </body>
+</html>

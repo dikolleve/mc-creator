@@ -1,0 +1,110 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.template {
+	width: 768px;
+}
+
+.mc_form {
+	width: 30rem;
+	padding: 35px;
+}
+
+.t_date {
+	left: 570px;
+	display: flex;
+	width: 10rem;	
+	letter-spacing: 10px;
+	margin-left: 560px;
+}
+
+.t_date .date {
+	margin-left: 11px;
+}
+
+.t_date .year {
+	margin-left: 11px;
+}
+
+.amount {
+	margin-left: 50px;
+}
+
+.name_amount {
+	display: flex;
+	margin-top: 15px;
+	margin-left: 50px;
+}
+
+.amount_in_words {
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+button {
+	background-color: white;
+	border: 2px solid #04aa6d;
+	padding: 5px 10px;
+	font-size: 1rem;
+	border-radius: 3px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+button:hover {
+	background-color: #04aa6d;
+	color: white;
+}
+
+.letter_case {
+	margin-top: 3rem;
+	margin-left: 15px;
+}
+
+@media print {
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	.t_date {
+		margin-top: 36px;
+	}
+
+	.name_amount .payee {
+		font-size: 14px;
+	}
+	
+	.payee {
+		width: 422.4px;
+	}
+	
+	.name_amount {
+		margin-left: 100px;
+	}
+
+	.amount {
+		width: 192px;
+		text-align: center;
+		margin-left: 35px;
+	}
+	
+	.amount_in_words {
+		width: 652.8px;
+		font-size: 14px;
+		margin-left: 80px;
+	}
+	
+	button {
+		display: none;
+	}
+
+	.letter_case {
+		display: none;
+	}
+}
