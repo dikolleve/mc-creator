@@ -12,11 +12,13 @@
   </head>
   <body>
     <div class="d-flex justify-content-center">
-      <div class="mc_form" id="managers_check_form_id">
-        <h3 class="text-center text-white bg-success p-3">MC CREATOR</h3>
+      <div class="mc_form rounded mt-1" id="managers_check_form_id">
+        <h3 class="text-center text-white bg-success p-3 fw-bold">
+          MC CREATOR
+        </h3>
         <form>
           <div class="form-group">
-            <label><strong>PAYEE</strong></label>
+            <label class="fw-bold">PAYEE</label>
             <input
               type="text"
               id="payee_id"
@@ -26,7 +28,7 @@
             />
           </div>
           <div class="form-group mt-2">
-            <label><strong>AMOUNT</strong></label>
+            <label class="fw-bold">AMOUNT</label>
             <input
               type="text"
               class="format_amount form-control"
@@ -36,11 +38,11 @@
             />
           </div>
           <div class="form-group mt-2">
-            <label>DATE</label>
+            <label class="fw-bold">DATE</label>
             <input type="date" class="form-control" id="date_id" />
           </div>
           <div class="form-group mt-2">
-            <label><strong>AMOUNT IN WORDS</strong></label>
+            <label class="fw-bold">AMOUNT IN WORDS</label>
             <textarea
               class="form-control"
               rows="3"
@@ -53,11 +55,14 @@
             value="PRINT PREVIEW"
             class="btn btn-primary mt-3"
           />
+          <input type="button" class="btn btn-danger mt-3 mx-2" value="CLEAR" />
         </form>
-        <div>
+        <div class="choose_payee mt-3">
           <div class="mt-2 mx-2 fw-bold">CHOOSE:</div>
-          <button id="dorel_id">DORELCO</button>
-          <button id="water_id">WATER DISTRICT</button>
+          <div class="d-flex justify-content-center">
+            <button id="dorel_id">DORELCO</button>
+            <button id="water_id">WATER DISTRICT</button>
+          </div>
         </div>
       </div>
     </div>

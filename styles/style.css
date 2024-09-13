@@ -3,6 +3,11 @@ body {
 	padding: 0;
 }
 
+.choose_payee {
+	background: #d2e48e; 
+	padding: 10px 3px;
+}
+
 .template {
 	width: 768px;
 }
